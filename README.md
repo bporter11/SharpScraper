@@ -4,13 +4,13 @@
 # Cardboard Stonks: Price Check Web Scraper
  > Your author list below should include links to all members GitHub (remove existing author).
  
- > Authors: [Nathan Caridad](https://github.com/ncari002)
+Authors: [Nathan Caridad](https://github.com/ncari002)
 
- >          [Maksim Kulbaev](https://github.com/unsafe4u)
+[Maksim Kulbaev](https://github.com/unsafe4u)
 
- >          [Brian Porter](https://github.com/bporter11)
+[Brian Porter](https://github.com/bporter11)
 
- >          [Wish Ullman](https://github.com/)
+[Wish Ullman](https://github.com/)
  INSERT LINKS FOR AUTHORS
 
 ## Project Description
