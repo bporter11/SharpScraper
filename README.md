@@ -2,7 +2,6 @@
  > Prompt text is any lines beginning with "\>"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Cardboard Stonks: Price Check Web Scraper
- > Your author list below should include links to all members GitHub (remove existing author).
  
 Authors:
 * [Nathan Caridad](https://github.com/ncari002)
