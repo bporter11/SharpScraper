@@ -7,7 +7,7 @@ Authors:
 * [Nathan Caridad](https://github.com/ncari002)
 * [Maksim Kulbaev](https://github.com/unsafe4u)
 * [Brian Porter](https://github.com/bporter11)
-* [Wish Ullman](https://github.com/)
+* [Wish Ullman](https://github.com/PaulU090)
 
 ## Project Description
  Why is it important or interesting to you?
