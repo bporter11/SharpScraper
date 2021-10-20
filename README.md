@@ -5,22 +5,34 @@
  > Your author list below should include links to all members GitHub (remove existing author).
  
  > Authors: [Nathan Caridad](https://github.com/ncari002)
+
  >          [Maksim Kulbaev](https://github.com/unsafe4u)
+
  >          [Brian Porter](https://github.com/bporter11)
+
  >          [Wish Ullman](https://github.com/)
  INSERT LINKS FOR AUTHORS
 
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include:
  > * Why is it important or interesting to you?
+
  > Web scrapping/data management is a useful skill to learn, so we're using this project to learn
+
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+
  > [Web Scrape Target](cardrush.jp) - website with large database of prices for items we're interested in
+
  > Python/c# for web scraping
+
  > Google sheets/MySQL/csv or xlsx file as database
+
  > * What will be the input/output of your project? What are the features that the project provides?
+
  > Input is a website link to a specific item
+
  > Hopefully just give a few parameters instead of a link later down the line
+
  > Output price, name, date grabbed, conversion between currencies, card game its from, set code, condition
  >
  > ## Phase II
