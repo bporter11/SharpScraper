@@ -14,16 +14,25 @@
  INSERT LINKS FOR AUTHORS
 
 ## Project Description
- > * Why is it important or interesting to you?
-Web scrapping/data management is a useful skill to learn, so we're using this project to learn
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
-[Web Scrape Target](cardrush.jp) - website with large database of prices for items we're interested in
-Python/c# for web scraping
-Google sheets/MySQL/csv or xlsx file as database
- > * What will be the input/output of your project? What are the features that the project provides?
-Input is a website link to a specific item
-Hopefully just give a few parameters instead of a link later down the line
-Output price, name, date grabbed, conversion between currencies, card game its from, set code, condition
+ Why is it important or interesting to you?
+
+* Web scrapping/data management is a useful skill to learn, so we're using this project to learn
+
+ What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+
+* [Web Scrape Target](cardrush.jp) - website with large database of prices for items we're interested in
+
+* Python/c# for web scraping
+
+* Google sheets/MySQL/csv or xlsx file as database
+
+What will be the input/output of your project? What are the features that the project provides?
+
+* Input is a website link to a specific item
+
+* Hopefully just give a few parameters instead of a link later down the line
+
+* Output price, name, date grabbed, conversion between currencies, card game its from, set code, condition
  >
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
