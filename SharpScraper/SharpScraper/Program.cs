@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
@@ -9,6 +10,8 @@ namespace SharpScraper
 	{
 		private const int kFailedGetPageResponseCode = 1;
 		private const int kFailedGetPageContentsCode = 2;
+
+		private const string kGoodRegEx = "^(?<name>[^()]*)[(]?.*[)]?【(?<rarity>.*)】{(?<setcode>.*)}$";
 
 		public static void ParseUserInput(string url)
 		{
@@ -38,14 +41,22 @@ namespace SharpScraper
 			var goods = Program.FindHtmlNodeWithAttributeRecursive(container, "class", "goods_name");
 			var price = Program.FindHtmlNodeWithAttributeRecursive(container, "class", "selling_price");
 			var model = Program.FindHtmlNodeWithAttributeRecursive(container, "class", "model_number_value");
-			var stock = Program.FindHtmlNodeWithAttributeRecursive(container, "class", "detail_section stock soldout");
+			var stock = Program.FindHtmlNodeWithAttributeRecursive(container, "class", "detail_section stock");
+			var cross = Program.FindHtmlNodeWithAttributeRecursive(container, "class", "detail_section stock soldout");
 
-			Console.WriteLine($"URL: {url}");
-			Console.WriteLine($"Goods found: [{goods is not null}]");
-			Console.WriteLine($"Price found: [{price is not null}]");
-			Console.WriteLine($"Model found: [{model is not null}]");
-			Console.WriteLine($"Stock found: [{model is not null}]");
-			Console.WriteLine("-----------------------------------");
+			var token = new Regex(Program.kGoodRegEx).Match(goods.InnerText);
+
+			var name = token.Groups["name"].ToString();
+			var rarity = token.Groups["rarity"].ToString();
+			var setcode = token.Groups["setcode"].ToString();
+
+			Console.OutputEncoding = System.Text.Encoding.Unicode;
+
+			Console.WriteLine($"URL:     {url}");
+			Console.WriteLine($"Name:    {name}");
+			Console.WriteLine($"Rarity:  {rarity}");
+			Console.WriteLine($"SetCode: {setcode}");
+			Console.WriteLine("----------------------------------------------");
 
 			Debugger.Break();
 		}
