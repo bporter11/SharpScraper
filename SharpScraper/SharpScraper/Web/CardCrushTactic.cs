@@ -8,7 +8,7 @@ namespace SharpScraper.Web
 	public class CardCrushTactic : ICardTactic
 	{
 		private const string kNameRegEx = @"^(?<name>[^()]*)[(]?.*[)]?【(?<rarity>.*)】{(?<setcode>.*)}$";
-		private const string kCostRegEx = @"^[^\d]*(?<price>[\d.,]*).*$";
+		private const string kCostRegEx = @"(?<price>[\d.,]+)";
 		private const string kLeftRegEx = @"(?<in_stock>[\d]+)";
 
 		private string m_name;
@@ -47,11 +47,11 @@ namespace SharpScraper.Web
 
 		public Task Parse(HtmlDocument document)
 		{
-			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "goods_name");
-			var price = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "selling_price");
-			var model = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "model_number_value");
-			var stock = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "detail_section stock");
-			var cross = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "detail_section stock soldout");
+			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "goods_name");
+			var price = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "figure");
+			var model = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "model_number_value");
+			var stock = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "div", "class", "detail_section stock");
+			var cross = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "div", "class", "detail_section stock soldout");
 
 			if (goods is not null)
 			{

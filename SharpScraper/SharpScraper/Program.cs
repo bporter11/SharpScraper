@@ -22,6 +22,8 @@ namespace SharpScraper
 		{
 			args = new string[]
 			{
+				"https://www.cardrush-pokemon.jp/product/3100",
+				"https://www.cardrush-pokemon.jp/product/3850",
 				"https://www.cardrush-pokemon.jp/product/3855",
 				"https://www.cardrush-pokemon.jp/product/3856",
 				"https://tcgmp.jp/product/detail?id=203727&referer=1",

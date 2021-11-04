@@ -42,7 +42,21 @@ namespace SharpScraper.Web
 
 		public Task Parse(HtmlDocument document)
 		{
-			// #TODO
+			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "name");
+			var datas = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "div", "class", "data");
+
+			if (goods is not null)
+			{
+				this.m_name = goods.InnerText.Trim();
+			}
+
+			if (datas is not null)
+			{
+				this.m_rarity = WebUtils.GetHtmlNodeContentByPath(datas, "table[1]", "tbody[1]", "tr[3]", "td[1]").Trim();
+				this.m_setCode = WebUtils.GetHtmlNodeContentByPath(datas, "table[1]", "tbody[1]", "tr[1]", "td[1]").Trim();
+			}
+
+			// #TODO model, price, in stock
 
 			return Task.CompletedTask;
 		}
