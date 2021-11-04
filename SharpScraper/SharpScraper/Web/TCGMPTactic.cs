@@ -11,7 +11,9 @@ namespace SharpScraper.Web
 		private string m_setCode;
 
 		private double m_price;
-		private bool m_inStock;
+		private string m_model;
+
+		private int m_inStock;
 		private bool m_soldOut;
 
 		public static string Domain { get; } = "tcgmp.jp";
@@ -24,7 +26,9 @@ namespace SharpScraper.Web
 
 		public double Price => this.m_price;
 
-		public bool InStock => this.m_inStock;
+		public string Model => this.m_model;
+
+		public int InStock => this.m_inStock;
 
 		public bool SoldOut => this.m_soldOut;
 
@@ -33,6 +37,7 @@ namespace SharpScraper.Web
 			this.m_name = String.Empty;
 			this.m_rarity = String.Empty;
 			this.m_setCode = String.Empty;
+			this.m_model = String.Empty;
 		}
 
 		public Task Parse(HtmlDocument document)

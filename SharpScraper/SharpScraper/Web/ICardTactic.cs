@@ -10,7 +10,9 @@ namespace SharpScraper.Web
 		public string SetCode { get; }
 
 		public double Price { get; }
-		public bool InStock { get; }
+		public string Model { get; }
+
+		public int InStock { get; }
 		public bool SoldOut { get; }
 
 		public Task Parse(HtmlDocument document);
