@@ -1,7 +1,5 @@
 ﻿using HtmlAgilityPack;
 using System;
-using System.Diagnostics;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -49,13 +47,11 @@ namespace SharpScraper.Web
 
 		public Task Parse(HtmlDocument document)
 		{
-			Debug.Assert(WebUtils.TryGetHtmlNodeByNodeName(document, "main_container", out var container));
-
-			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(container, "class", "goods_name");
-			var price = WebUtils.FindHtmlNodeWithAttributeRecursive(container, "class", "selling_price");
-			var model = WebUtils.FindHtmlNodeWithAttributeRecursive(container, "class", "model_number_value");
-			var stock = WebUtils.FindHtmlNodeWithAttributeRecursive(container, "class", "detail_section stock");
-			var cross = WebUtils.FindHtmlNodeWithAttributeRecursive(container, "class", "detail_section stock soldout");
+			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "goods_name");
+			var price = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "selling_price");
+			var model = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "model_number_value");
+			var stock = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "detail_section stock");
+			var cross = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "class", "detail_section stock soldout");
 
 			if (goods is not null)
 			{
