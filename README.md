@@ -18,17 +18,15 @@ Authors:
 
 * [Web Scrape Target](cardrush.jp) - website with large database of prices for items we're interested in
 
-* Python/c# for web scraping
+* C# for web scraping
 
-* Google sheets/MySQL/csv or xlsx file as database
+* Google sheets/csv file as database
 
 What will be the input/output of your project? What are the features that the project provides?
 
 * Input is a website link to a specific item
 
-* Hopefully just give a few parameters instead of a link later down the line
-
-* Output price, name, date grabbed, conversion between currencies, card game its from, set code, condition
+* Output is price, name, date grabbed, set code, condition
  >
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
