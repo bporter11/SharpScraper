@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace SharpScraper.Web
@@ -24,7 +25,7 @@ namespace SharpScraper.Web
 			this.m_cardTactics = new List<ICardTactic>();
 		}
 
-		private static bool TryGetDomainFromURL(string url, out string domain)
+		private static bool TryGetDomainFromURL(string url, [NotNullWhen(true)] out string? domain)
 		{
 			try
 			{
@@ -40,18 +41,24 @@ namespace SharpScraper.Web
 
 		public void Init()
 		{
-			this.m_domainToTactic.Add(CardCrushTactic.Domain, () => new CardCrushTactic());
-			this.m_domainToTactic.Add(TCGMPTactic.Domain, () => new TCGMPTactic());
-			// #TODO more in case we need
+			this.RegisterTactic<TCGMPTactic>(TCGMPTactic.Domain);
+			this.RegisterTactic<CardRushTactic>(CardRushTactic.Domain);
 		}
 
-		public async Task Export(string path, ExportType exportType)
+		public void RegisterTactic<T>(string? domain) where T : ICardTactic, new()
+		{
+			this.m_domainToTactic[domain ?? String.Empty] = () => new T();
+		}
+
+		public async Task ExportAsync(string path, ExportType exportType)
 		{
 			// #TODO
+			_ = path;
+			_ = exportType;
 			await Task.Delay(0);
 		}
 
-		public async Task Parse(string url)
+		public async Task ParseAsync(string url)
 		{
 			if (!CardFactory.TryGetDomainFromURL(url, out var domain))
 			{
@@ -63,7 +70,12 @@ namespace SharpScraper.Web
 				throw new CardTacticNotRegisteredException($"Unable to find parser for {domain} domain");
 			}
 
-			var document = await WebUtils.TryReceiveHtmlPage(url);
+			var document = await WebUtils.TryReceiveHtmlPageAsync(url);
+
+			if (document is null)
+			{
+				return;
+			}
 
 			var cardTactic = activator.Invoke();
 

@@ -8,11 +8,11 @@ namespace SharpScraper.Web
 		{
 		}
 
-		public CardTacticNotRegisteredException(string message) : base(message)
+		public CardTacticNotRegisteredException(string? message) : base(message)
 		{
 		}
 
-		public CardTacticNotRegisteredException(string message, Exception inner) : base(message, inner)
+		public CardTacticNotRegisteredException(string? message, Exception? inner) : base(message, inner)
 		{
 		}
 	}
