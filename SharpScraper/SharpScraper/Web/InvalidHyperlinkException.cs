@@ -8,11 +8,11 @@ namespace SharpScraper.Web
 		{
 		}
 
-		public InvalidHyperlinkException(string message) : base(message)
+		public InvalidHyperlinkException(string? message) : base(message)
 		{
 		}
 
-		public InvalidHyperlinkException(string message, Exception inner) : base(message, inner)
+		public InvalidHyperlinkException(string? message, Exception? inner) : base(message, inner)
 		{
 		}
 	}
