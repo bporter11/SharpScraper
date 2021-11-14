@@ -18,6 +18,7 @@ namespace SharpScraper.Web
 
 		public static readonly string Domain = "www.cardrush-pokemon.jp";
 
+		public bool IsNull => false;
 		public string Name => this.m_name;
 		public double Price => this.m_price;
 		public string Rarity => this.m_rarity;
