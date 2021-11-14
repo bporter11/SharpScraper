@@ -5,6 +5,7 @@ namespace SharpScraper.Web
 {
 	public interface ICardTactic
 	{
+		public bool IsNull { get; }
 		public string Name { get; }
 		public double Price { get; }
 		public string Rarity { get; }
