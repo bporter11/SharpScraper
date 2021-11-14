@@ -6,6 +6,8 @@ namespace SharpScraper.Web
 {
 	public class NullTactic : ICardTactic
 	{
+		public static readonly NullTactic Null = new();
+
 		public bool IsNull => true;
 		public string Name => throw new NotImplementedException();
 		public double Price => throw new NotImplementedException();

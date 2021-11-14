@@ -60,14 +60,16 @@ namespace SharpScraper.Web
 
 		public async Task ParseAsync(string url)
 		{
+			this.m_cardTactics.Add(NullTactic.Null);
+
 			if (!CardFactory.TryGetDomainFromURL(url, out var domain))
 			{
-				throw new InvalidHyperlinkException($"Unable to get domain from {url} hyperlink");
+				return;
 			}
 
 			if (!this.m_domainToTactic.TryGetValue(domain, out var activator))
 			{
-				throw new CardTacticNotRegisteredException($"Unable to find parser for {domain} domain");
+				return;
 			}
 
 			var document = await WebUtils.TryReceiveHtmlPageAsync(url);
@@ -81,7 +83,7 @@ namespace SharpScraper.Web
 
 			await cardTactic.Parse(document);
 
-			this.m_cardTactics.Add(cardTactic);
+			this.m_cardTactics[^1] = cardTactic;
 		}
 	}
 }
