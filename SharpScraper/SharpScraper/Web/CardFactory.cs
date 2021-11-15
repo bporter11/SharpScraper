@@ -43,7 +43,8 @@ namespace SharpScraper.Web
 		{
 			this.RegisterTactic<TCGMPTactic>(TCGMPTactic.Domain);
 			this.RegisterTactic<CardRushTactic>(CardRushTactic.Domain);
-            this.RegisterTactic<CardMarketTactic>(CardMarketTactic.Domain);
+			this.RegisterTactic<TrollAndToadTactic>(TrollAndToadTactic.Domain);
+      this.RegisterTactic<CardMarketTactic>(CardMarketTactic.Domain);
 		}
 
 		public void RegisterTactic<T>(string? domain) where T : ICardTactic, new()
