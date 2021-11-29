@@ -16,8 +16,7 @@
 # Mono auto generated files
 mono_crash.*
 
-# CardScraper UI
-SharpScraper/CardScraper
+# Temporary Pending
 SharpScraper/TempPending
 
 # Build results
