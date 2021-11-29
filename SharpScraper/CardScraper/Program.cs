@@ -21,11 +21,11 @@ namespace CardScraper
 				return;
 			}
 
-			if (String.Compare("file", args[0], StringComparison.Ordinal) == 0)
+			if (String.Compare("file", args[0], StringComparison.OrdinalIgnoreCase) == 0)
 			{
 				await Program.ProcessFromFile(args);
 			}
-			else if (String.Compare("args", args[0], StringComparison.Ordinal) == 0)
+			else if (String.Compare("args", args[0], StringComparison.OrdinalIgnoreCase) == 0)
 			{
 				await Program.ProcessFromArgs(args);
 			}
