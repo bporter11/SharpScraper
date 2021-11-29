@@ -1,4 +1,4 @@
-﻿using SharpScraper.Web;
+using SharpScraper.Web;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -36,14 +36,14 @@ namespace ScraperXUnit
 		}
 
 		[Theory]
-		[InlineData(TrollAndToadTest.kWebTest1, 60.99)]
-		[InlineData(TrollAndToadTest.kWebTest2, 3.98)]
-		[InlineData(TrollAndToadTest.kWebTest3, 0.25)]
-		public async Task PriceAsyncTest(string url, double price)
+		[InlineData(TrollAndToadTest.kWebTest1)]
+		[InlineData(TrollAndToadTest.kWebTest2)]
+		[InlineData(TrollAndToadTest.kWebTest3)]
+		public async Task PriceAsyncTest(string url)
 		{
 			var loadedCard = await LoadURLAsync(url);
 
-			Assert.Equal(loadedCard.Price, price);
+			Assert.NotEqual(0.0, loadedCard.Price);
 		}
 
 		[Theory]
