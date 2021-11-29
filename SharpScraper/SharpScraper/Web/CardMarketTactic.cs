@@ -23,7 +23,7 @@ namespace SharpScraper.Web
         private const string kNameRegEx = @"^(?<name>[^()]*)[(]?(?<setcode>[^()]*)[)]?$";
         private const string kPriceRegEx = @"^(?<price>[\d,.]+).*$";
 
-        private static readonly CultureInfo ms_cultureInfo = new CultureInfo("en")
+        private static readonly CultureInfo ms_cultureInfo = new("en")
         {
             NumberFormat = new NumberFormatInfo()
             {
@@ -40,6 +40,7 @@ namespace SharpScraper.Web
 
         public static readonly string Domain = "www.cardmarket.com";
 
+        public bool IsNull => false;
         public string Name => this.m_name;
         public double Price => this.m_price;
         public string Rarity => this.m_rarity;
@@ -81,7 +82,7 @@ namespace SharpScraper.Web
 
                 if (rarity is not null)
                 {
-                    this.m_rarity = rarity.GetAttributeValue("title", String.Empty);
+                    this.m_rarity = rarity.GetAttributeValue("title", String.Empty).Trim();
                 }
             }
 

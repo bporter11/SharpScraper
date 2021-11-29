@@ -1,28 +1,29 @@
-﻿using System;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SharpScraper.Web
 {
 	public class CardFactory
 	{
-		public enum ExportType
-		{
-			XLSX,
-			CSV, // ???
-		}
-
 		private readonly Dictionary<string, Func<ICardTactic>> m_domainToTactic;
-		private readonly List<ICardTactic> m_cardTactics;
+		private readonly Dictionary<string, Func<IExportBase>> m_stringToExport;
+		private readonly ReadOnlyDictionary<string, ICardTactic> m_readonlyCards;
+		private readonly ConcurrentDictionary<string, ICardTactic> m_cardTactics;
 
-		public ReadOnlyCollection<ICardTactic> LoadedCards => new(this.m_cardTactics);
+		public ReadOnlyDictionary<string, ICardTactic> LoadedCards => this.m_readonlyCards;
 
 		public CardFactory()
 		{
 			this.m_domainToTactic = new Dictionary<string, Func<ICardTactic>>();
-			this.m_cardTactics = new List<ICardTactic>();
+			this.m_stringToExport = new Dictionary<string, Func<IExportBase>>();
+			this.m_cardTactics = new ConcurrentDictionary<string, ICardTactic>();
+			this.m_readonlyCards = new ReadOnlyDictionary<string, ICardTactic>(this.m_cardTactics);
 		}
 
 		private static bool TryGetDomainFromURL(string url, [NotNullWhen(true)] out string? domain)
@@ -44,25 +45,62 @@ namespace SharpScraper.Web
 			this.RegisterTactic<TCGMPTactic>(TCGMPTactic.Domain);
 			this.RegisterTactic<CardRushTactic>(CardRushTactic.Domain);
 			this.RegisterTactic<TrollAndToadTactic>(TrollAndToadTactic.Domain);
-      this.RegisterTactic<CardMarketTactic>(CardMarketTactic.Domain);
+			this.RegisterTactic<CardMarketTactic>(CardMarketTactic.Domain);
+			this.RegisterTactic<PokemonWizardTactic>(PokemonWizardTactic.Domain);
+		}
+
+		public bool IsTacticRegistered(string? domain)
+		{
+			return this.m_domainToTactic.ContainsKey(domain ?? String.Empty);
+		}
+		public bool IsExportRegistered(string? export)
+		{
+			return this.m_stringToExport.ContainsKey(export ?? String.Empty);
 		}
 
 		public void RegisterTactic<T>(string? domain) where T : ICardTactic, new()
 		{
 			this.m_domainToTactic[domain ?? String.Empty] = () => new T();
 		}
-
-		public async Task ExportAsync(string path, ExportType exportType)
+		public void RegisterExport<T>(string? export) where T : IExportBase, new()
 		{
-			// #TODO
-			_ = path;
-			_ = exportType;
-			await Task.Delay(0);
+			this.m_stringToExport[export ?? String.Empty] = () => new T();
+		}
+
+		public async Task<int> ExportAsync(Stream? stream, string export)
+		{
+			if (stream is null)
+			{
+				return -1;
+			}
+
+			if (!this.m_stringToExport.TryGetValue(export, out var activator))
+			{
+				return -1;
+			}
+
+			var details = this.m_cardTactics.Where(_ => !_.Value.IsNull).ToDictionary(_ => _.Key, _ => _.Value);
+
+			await activator.Invoke().Export(stream, details);
+
+			return details.Count;
+		}
+		public async Task<int> ExportAsync(string? iopath, string export)
+		{
+			if (String.IsNullOrEmpty(iopath))
+			{
+				return -1;
+			}
+
+			using (var stream = File.Open(iopath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
+			{
+				return await this.ExportAsync(stream, export);
+			}
 		}
 
 		public async Task ParseAsync(string url)
 		{
-			this.m_cardTactics.Add(NullTactic.Null);
+			this.m_cardTactics[url] = NullTactic.Null;
 
 			if (!CardFactory.TryGetDomainFromURL(url, out var domain))
 			{
@@ -85,7 +123,7 @@ namespace SharpScraper.Web
 
 			await cardTactic.Parse(document);
 
-			this.m_cardTactics[^1] = cardTactic;
+			this.m_cardTactics[url] = cardTactic;
 		}
 	}
 }

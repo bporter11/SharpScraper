@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpScraper", "SharpScraper\SharpScraper.csproj", "{69CD7E36-1A8C-40F2-9408-9D02D809A26E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScraperXUnit", "ScraperXUnit\ScraperXUnit.csproj", "{6AD6125E-AE83-4BD1-8569-C52504F96D96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScraperXUnit", "ScraperXUnit\ScraperXUnit.csproj", "{6AD6125E-AE83-4BD1-8569-C52504F96D96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D191CC3B-B660-409A-902A-2EEB76C44C13}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
