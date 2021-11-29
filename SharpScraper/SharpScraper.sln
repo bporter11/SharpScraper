@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardScraper", "CardScraper\CardScraper.csproj", "{0479208D-1AAB-400D-A31A-0B820506D905}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{6AD6125E-AE83-4BD1-8569-C52504F96D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AD6125E-AE83-4BD1-8569-C52504F96D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AD6125E-AE83-4BD1-8569-C52504F96D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0479208D-1AAB-400D-A31A-0B820506D905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0479208D-1AAB-400D-A31A-0B820506D905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0479208D-1AAB-400D-A31A-0B820506D905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0479208D-1AAB-400D-A31A-0B820506D905}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
