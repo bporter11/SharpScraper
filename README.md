@@ -55,7 +55,7 @@ What will be the input/output of your project? What are the features that the pr
  * Composite Pattern:
      * #TODO (ICardTactic implements this pattern, describe in what way)
  >   * How did the design pattern help you write better code?
- * This allowed us to write better code by defining clear guidelines as to how each website is handled, managing different use cases per website, and allowing things to inheret from an abstract class rather than hardcoding functionality. This allowed expandability in our code rather than having to restructure if we had new websites or export types in the future.
+     * This allowed us to write better code by defining clear guidelines as to how each website is handled, managing different use cases per website, and allowing things to inheret from an abstract class rather than hardcoding functionality. This allowed expandability in our code rather than having to restructure if we had new websites or export types in the future.
  >   * An updated class diagram that reflects the design patterns you used. You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description).
  >   * Make sure your README file (and Project board) are up-to-date reflecting the current status of your project. Previous versions of the README file should still be visible through your commit history.
 > 
@@ -75,6 +75,8 @@ What will be the input/output of your project? What are the features that the pr
  
  ## Screenshots
  > Screenshots of the input/output after running your application
+ ![input args](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/input%20args.png)
+ ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/input%20files.png)
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
