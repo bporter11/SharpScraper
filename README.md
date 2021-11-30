@@ -84,18 +84,18 @@ Instructions on installing and running your application
 
 Command line usage works as 
 
-# Windows:
+## Windows:
     CardScraper.exe args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
-# Unix
+## Unix
     CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
-Or
+##Or
 
-# Windows:
+## Windows:
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
 
-# Unix
+## Unix
     CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
  
 # Options
