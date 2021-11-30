@@ -81,14 +81,20 @@ What will be the input/output of your project? What are the features that the pr
  > Or you can pass in one or more files that contains multiple links
  ## Installation/Usage
 Instructions on installing and running your application
+
 Command line usage works as 
+
 #Windows:
     CardScraper.exe args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
+
 #Unix
     CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
+
 Or
+
 #Windows:
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
+
 #Unix
     CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
  
