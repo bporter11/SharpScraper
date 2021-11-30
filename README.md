@@ -51,7 +51,7 @@ What will be the input/output of your project? What are the features that the pr
  * Factory Pattern:
      * Provides the best method of creating object. The client need not know how creating the object works as all objects are referred to using a common interface that allows any object, despite it's differences, to be properly interacted with. This is great for our website scraper because the client only has to interact with the factory and the concrete object, the process of making the concrete object from the abstract object is abstracted away from the client/user.
  * Strategy Pattern:
-     * #TODO (IExportBase implements this pattern, describe in what way)
+     * Provides an effective way to implement different forms of output (text,xml,xlsx). The strategy pattern is implemented through the IExportBase class which provides a default template for exporting the parsed data. The specific strategies inherit from the IExportBase class and are implemented in the TextExportBase, XLSXExportBase and XMLExportBase classes. This design patterns provides an effective way to have different forms of output without having to alter the base interface.
  * Composite Pattern:
      * #TODO (ICardTactic implements this pattern, describe in what way)
  >   * How did the design pattern help you write better code?
@@ -75,10 +75,31 @@ What will be the input/output of your project? What are the features that the pr
  
  ## Screenshots
  > Screenshots of the input/output after running your application
- ![input args](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/input%20args.png)
- ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/input%20files.png)
+ ![input args](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/input%20args.png)
+ > You can pass direct links to products
+ ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/input%20files.png)
+ > Or you can pass in one or more files that contains multiple links
  ## Installation/Usage
  > Instructions on installing and running your application
+Command line usage works as 
+Windows:
+    CardScraper.exe args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
+Unix
+    CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
+Or
+Windows:
+    CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
+Unix
+    CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
+ 
+Options
+    [OUTPUT TYPE]           TXT, CSV, XML, or XLSX. Must be in all caps
+    [EXPORT PATH]           specifies where you want your output to be located. if just
+                            the name of a file, then it will be placed in the same
+                            directory from where the command was ran
+    [URL...]                Multiple URLs can be given at the same time
+    [File...]               Multiple Files can be given at the same time
+ 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
- 
+Project was tested by manually checking desired values from the website and checking those values against those acquired from the program itself. Since price can flucuate, these test cases may need to be updated if run at a later date.
