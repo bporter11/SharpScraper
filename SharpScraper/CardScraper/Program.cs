@@ -2,6 +2,7 @@ using SharpScraper.Web;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CardScraper
@@ -52,7 +53,7 @@ namespace CardScraper
 					continue;
 				}
 
-				allURLs.AddRange(File.ReadAllLines(args[i]));
+				allURLs.AddRange(File.ReadAllLines(args[i]).Where(_ => !String.IsNullOrWhiteSpace(_)));
 			}
 
 			var factory = new CardFactory();
