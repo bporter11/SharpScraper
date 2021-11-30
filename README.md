@@ -84,21 +84,21 @@ Instructions on installing and running your application
 
 Command line usage works as 
 
-#Windows:
+# Windows:
     CardScraper.exe args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
-#Unix
+# Unix
     CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
 Or
 
-#Windows:
+# Windows:
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
 
-#Unix
+# Unix
     CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
  
-#Options
+# Options
     [OUTPUT TYPE]           TXT, CSV, XML, or XLSX. Must be in all caps
     [EXPORT PATH]           specifies where you want your output to be located. if just
                             the name of a file, then it will be placed in the same
