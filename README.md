@@ -53,12 +53,12 @@ What will be the input/output of your project? What are the features that the pr
  * Strategy Pattern:
      * Provides an effective way to implement different forms of output (text,xml,xlsx). The strategy pattern is implemented through the IExportBase class which provides a default template for exporting the parsed data. The specific strategies inherit from the IExportBase class and are implemented in the TextExportBase, XLSXExportBase and XMLExportBase classes. This design patterns provides an effective way to have different forms of output without having to alter the base interface.
  * Composite Pattern:
-     * #TODO (ICardTactic implements this pattern, describe in what way)
- >   * How did the design pattern help you write better code?
+     * Provides an abstract interface for the objects in the composition. This pattern implements the default behavior through the ICardTactic class, which gets inherited by its common Tactic classes. The ICardTactic class acts as an interface for accessing and managing its child components. The CardRushTactic, PokemonWizardTactic, TrollAndToadTactic, TCGMPTactic and CardMarketTactic all act as leaf classes inheriting from the abstract interface class (ICardTactic).
+* How did the design pattern help you write better code?
      * This allowed us to write better code by defining clear guidelines as to how each website is handled, managing different use cases per website, and allowing things to inheret from an abstract class rather than hardcoding functionality. This allowed expandability in our code rather than having to restructure if we had new websites or export types in the future.
- >   * An updated class diagram that reflects the design patterns you used. You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description).
- >   * Make sure your README file (and Project board) are up-to-date reflecting the current status of your project. Previous versions of the README file should still be visible through your commit history.
-> 
+* An updated class diagram that reflects the design patterns you used. You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description).
+* Make sure your README file (and Project board) are up-to-date reflecting the current status of your project. Previous versions of the README file should still be visible through your commit history.
+ 
 > During the meeting with your TA you will discuss: 
  > * How effective your last sprint was (each member should talk about what they did)
  > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
