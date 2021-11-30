@@ -80,7 +80,7 @@ What will be the input/output of your project? What are the features that the pr
  ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/input%20files.png)
  > Or you can pass in one or more files that contains multiple links
  ## Installation/Usage
- > Instructions on installing and running your application
+Instructions on installing and running your application
 Command line usage works as 
 #Windows:
     CardScraper.exe args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
