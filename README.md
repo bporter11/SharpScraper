@@ -55,6 +55,8 @@ Unix
 
 Or
 
+args means you can supply links to the item.
+
 Windows:
 
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
@@ -62,6 +64,8 @@ Windows:
 Unix
 
     CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
+
+File means a text file containing links, one per line.
  
 # Options
     [OUTPUT TYPE]           TXT, CSV, XML, or XLSX. Must be in all caps
