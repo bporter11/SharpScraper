@@ -2,7 +2,7 @@
  > Prompt text is any lines beginning with "\>"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Cardboard Stonks: Price Check Web Scraper
- 
+
 Authors:
 * [Nathan Caridad](https://github.com/ncari002)
 * [Maksim Kulbaev](https://github.com/unsafe4u)
@@ -24,9 +24,9 @@ Authors:
 
 What will be the input/output of your project? What are the features that the project provides?
 
-* Input is a website link to a specific item
+* Input is a website link to a specific item or a .txt file with list of links to specific items
 
-* Output is price, name, date grabbed, set code, condition
+* Output is name, price, rarity, set code, set name, URL of the items processed
  >
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
@@ -43,11 +43,15 @@ What will be the input/output of your project? What are the features that the pr
  > * You should also update this README file by adding the following:
  >   * What design patterns did you use? For each design pattern you must explain in 4-5 sentences:
  * Null Object Pattern:
-     * Provides default behavior in case data is not available. This is useful for our web scraper because different website might not have all the data we need, so certain functions are not impliment exactly the same as others and instead return null values. An abstract class is first defined, and a class is defined for each website we use. Since the given websites contain different data, we can allow some return values to be assigned null if there is no data available, instead of just crashing our code.
+     * Provides default behavior in case data is not available. This is useful for our web scraper because different website might not have all the data we need, so certain functions are not implement exactly the same as others and instead return null values. An abstract class is first defined, and a class is defined for each website we use. Since the given websites contain different data, we can allow some return values to be assigned null if there is no data available, instead of just crashing our code.
  * Factory Pattern:
      * Provides the best method of creating object. The client need not know how creating the object works as all objects are referred to using a common interface that allows any object, despite it's differences, to be properly interacted with. This is great for our website scraper because the client only has to interact with the factory and the concrete object, the process of making the concrete object from the abstract object is abstracted away from the client/user.
+ * Strategy Pattern:
+     * #TODO (IExportBase implements this pattern, describe in what way)
+ * Composite Pattern:
+     * #TODO (ICardTactic implements this pattern, describe in what way)
  >   * How did the design pattern help you write better code?
- * This allowed us to write better code by defining clear guidelines as to how each website is handled, managing different use cases per website, and allowing things to inheret from an abstract class rather than hardcoding functionality. This allowed expandability in our code rather than having to restructure if we had new websites in the future.
+ * This allowed us to write better code by defining clear guidelines as to how each website is handled, managing different use cases per website, and allowing things to inheret from an abstract class rather than hardcoding functionality. This allowed expandability in our code rather than having to restructure if we had new websites or export types in the future.
  >   * An updated class diagram that reflects the design patterns you used. You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description).
  >   * Make sure your README file (and Project board) are up-to-date reflecting the current status of your project. Previous versions of the README file should still be visible through your commit history.
 > 
