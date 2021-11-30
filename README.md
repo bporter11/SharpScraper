@@ -20,11 +20,11 @@ Authors:
 
  What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
 
-* [Web Scrape Target](cardrush.jp) - website with large database of prices for items we're interested in
+* [Web Scrape Target](cardrush-pokemon.jp) - website with large database of prices for items we're interested in. More websites are supported in the release info
 
 * C# for web scraping
 
-* Google sheets/csv file as database
+* Txt, csv, xml, and xlsx as output formats
 
 What will be the input/output of your project? What are the features that the project provides?
 
