@@ -3,6 +3,10 @@
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Cardboard Stonks: Price Check Web Scraper
 
+[![Build](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/actions/workflows/build.yml)
+[![Deploy](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/actions/workflows/deploy.yml)
+[![Tests](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/actions/workflows/tests.yml)
+
 Authors:
 * [Nathan Caridad](https://github.com/ncari002)
 * [Maksim Kulbaev](https://github.com/unsafe4u)
