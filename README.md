@@ -80,7 +80,7 @@ What will be the input/output of your project? What are the features that the pr
  ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/input%20files.png)
  > Or you can pass in one or more files that contains multiple links
  ## Installation/Usage
-Instructions on installing and running your application
+You must have [.Net 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) installed
 
 Command line usage works as 
 
@@ -90,7 +90,7 @@ Command line usage works as
 ## Unix
     CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
-##Or
+## Or
 
 ## Windows:
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
@@ -106,6 +106,7 @@ Command line usage works as
     [URL...]                Multiple URLs can be given at the same time
     [File...]               Multiple Files can be given at the same time
  
- ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+## Testing
+How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+
 Project was tested by manually checking desired values from the website and checking those values against those acquired from the program itself. Since price can flucuate, these test cases may need to be updated if run at a later date.
