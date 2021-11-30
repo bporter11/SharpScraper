@@ -1,4 +1,4 @@
-name: Card Scraper Run
+name: Build
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Card Scraper
+    name: Build
 
     steps:
     - uses: actions/checkout@v2
@@ -17,7 +17,5 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.403'
-    - name: Build
-      run: dotnet build --configuration Release SharpScraper/SharpScraper.sln
-    - name: Test
-      run: dotnet test --configuration Release SharpScraper/SharpScraper.sln
+    - name: Run Card Scraper
+      run: dotnet run -c Release --project SharpScraper/CardScraper/CardScraper.csproj -- args XML output.xml https://www.pokemonwizard.com/cards/123436/pikachu-ex-xy124

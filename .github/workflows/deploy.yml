@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploy
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.403'
+    - name: Deploy for Windows
+      run: dotnet publish -c Release -r win-x64 --self-contained false SharpScraper/CardScraper/CardScraper.csproj
+    - name: Deploy for MacOS
+      run: dotnet publish -c Release -r osx-x64 --self-contained false SharpScraper/CardScraper/CardScraper.csproj
+    - name: Deploy for Linux
+      run: dotnet publish -c Release -r linux-x64 --self-contained false SharpScraper/CardScraper/CardScraper.csproj
