@@ -82,6 +82,8 @@ What will be the input/output of your project? What are the features that the pr
  ## Installation/Usage
 You must have [.Net 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) installed
 
+You can download the latest release [here](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/releases)
+
 Command line usage works as 
 
 ## Windows:
@@ -90,7 +92,7 @@ Command line usage works as
 ## Unix
     CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
-## Or
+# Or
 
 ## Windows:
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
