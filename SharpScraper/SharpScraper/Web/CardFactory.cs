@@ -47,6 +47,11 @@ namespace SharpScraper.Web
 			this.RegisterTactic<TrollAndToadTactic>(TrollAndToadTactic.Domain);
 			this.RegisterTactic<CardMarketTactic>(CardMarketTactic.Domain);
 			this.RegisterTactic<PokemonWizardTactic>(PokemonWizardTactic.Domain);
+
+			this.RegisterExport<XMLExportBase>(XMLExportBase.Name);
+			this.RegisterExport<CSVExportBase>(CSVExportBase.Name);
+			this.RegisterExport<TextExportBase>(TextExportBase.Name);
+			this.RegisterExport<XLSXExportBase>(XLSXExportBase.Name);
 		}
 
 		public bool IsTacticRegistered(string? domain)
