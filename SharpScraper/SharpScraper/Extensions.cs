@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace SharpScraper
 {
-	public static class Extensions
+	internal static class Extensions
 	{
 		public static string RawConcat(this string[]? array, int start, int count, string separator)
 		{

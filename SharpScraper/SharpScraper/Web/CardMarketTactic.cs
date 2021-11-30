@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+using HtmlAgilityPack;
 using System;
 using System.Globalization;
 using System.Collections.Generic;
@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SharpScraper.Web
 {
+	/// <summary>
+	/// Implements <see cref="ICardTactic"/> that operates on CardMarket domain.
+	/// </summary>
     public class CardMarketTactic : ICardTactic
     {
         private enum QualityType : int
@@ -38,15 +41,34 @@ namespace SharpScraper.Web
         private string m_setCode;
         private string m_setName;
 
+		/// <summary>
+		/// Domain that this class uses as a target.
+		/// </summary>
         public static readonly string Domain = "www.cardmarket.com";
 
-        public bool IsNull => false;
+		/// <summary>
+		/// Returns constant <see langword="false"/>.
+		/// </summary>
+		public bool IsNull => false;
+
+		/// <inheritdoc/>
         public string Name => this.m_name;
+
+		/// <inheritdoc/>
         public double Price => this.m_price;
+
+		/// <inheritdoc/>
         public string Rarity => this.m_rarity;
+
+		/// <inheritdoc/>
         public string SetCode => this.m_setCode;
+
+		/// <inheritdoc/>
         public string SetName => this.m_setName;
 
+		/// <summary>
+		/// Constructs new instance of <see cref="CardMarketTactic"/>.
+		/// </summary>
         public CardMarketTactic()
         {
             this.m_name = String.Empty;
@@ -55,6 +77,7 @@ namespace SharpScraper.Web
             this.m_setName = String.Empty;
         }
 
+		/// <inheritdoc/>
         public Task Parse(HtmlDocument document)
         {
             var main = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "div", "class", "flex-grow-1");

@@ -1,10 +1,10 @@
-﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 
 namespace SharpScraper
 {
-	public static class OpenXMLUtils
+	internal static class OpenXMLUtils
 	{
 		public static Row AppendCell<T>(this Row row, T value, uint style = 1)
 		{

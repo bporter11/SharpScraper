@@ -11,10 +11,14 @@ using X15 = DocumentFormat.OpenXml.Office2013.Excel;
 
 namespace SharpScraper.Web
 {
+	/// <summary>
+	/// Implements <see cref="IExportBase"/> that operates on .xlsx extension files.
+	/// </summary>
 	public class XLSXExportBase : IExportBase
 	{
-		// https://www.c-sharpcorner.com/article/creating-excel-file-using-openxml/
-
+		/// <summary>
+		/// String identifier for this <see cref="IExportBase"/>.
+		/// </summary>
 		public static readonly string Name = "XLSX";
 
 		private static SheetData GenerateSheetdataForDetails(IDictionary<string, ICardTactic> cards)
@@ -48,7 +52,7 @@ namespace SharpScraper.Web
 			return sheetData;
 		}
 
-		private static void GenerateWorkbookPartContent(WorkbookPart workbookPart, IDictionary<string, ICardTactic> cards)
+		private static void GenerateWorkbookPartContent(WorkbookPart workbookPart)
 		{
 			workbookPart.Workbook = new Workbook().AppendChild<Workbook, Sheets>(new Sheets().AppendChild<Sheets, Sheet>(new()
 			{
@@ -314,13 +318,14 @@ namespace SharpScraper.Web
 				.AppendChild<Worksheet, PageMargins>(pageMargins);
 		}
 
+		/// <inheritdoc/>
 		public Task Export(Stream stream, IDictionary<string, ICardTactic> cards)
 		{
 			using (var document = SpreadsheetDocument.Create(stream, SpreadsheetDocumentType.Workbook))
 			{
 				var workbookPart = document.AddWorkbookPart();
 
-				XLSXExportBase.GenerateWorkbookPartContent(workbookPart, cards);
+				XLSXExportBase.GenerateWorkbookPartContent(workbookPart);
 
 				var workbookStyles = workbookPart.AddNewPart<WorkbookStylesPart>("AAA");
 
