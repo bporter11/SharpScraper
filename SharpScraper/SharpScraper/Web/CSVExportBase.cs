@@ -1,16 +1,20 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SharpScraper.Web
 {
+	/// <summary>
+	/// Implements <see cref="IExportBase"/> that operates on .csv extension files.
+	/// </summary>
 	public class CSVExportBase : IExportBase
 	{
+		/// <summary>
+		/// String identifier for this <see cref="IExportBase"/>.
+		/// </summary>
 		public static readonly string Name = "CSV";
 
+		/// <inheritdoc/>
 		public Task Export(Stream stream, IDictionary<string, ICardTactic> cards)
 		{
 			var writer = new StreamWriter(stream);

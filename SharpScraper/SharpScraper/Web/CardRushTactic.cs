@@ -1,10 +1,13 @@
-﻿using HtmlAgilityPack;
+using HtmlAgilityPack;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SharpScraper.Web
 {
+	/// <summary>
+	/// Implements <see cref="ICardTactic"/> that operates on CardRush domain.
+	/// </summary>
 	public class CardRushTactic : ICardTactic
 	{
 		private const string kNameRegEx = @"^(?<name>[^()]*)[(]*(?<setname>[^()]*)[)]*【(?<rarity>.*)】{(?<setcode>.*)}$";
@@ -16,15 +19,34 @@ namespace SharpScraper.Web
 		private string m_setCode;
 		private string m_setName;
 
+		/// <summary>
+		/// Domain that this class uses as a target.
+		/// </summary>
 		public static readonly string Domain = "www.cardrush-pokemon.jp";
 
+		/// <summary>
+		/// Returns constant <see langword="false"/>.
+		/// </summary>
 		public bool IsNull => false;
+
+		/// <inheritdoc/>
 		public string Name => this.m_name;
+
+		/// <inheritdoc/>
 		public double Price => this.m_price;
+
+		/// <inheritdoc/>
 		public string Rarity => this.m_rarity;
+
+		/// <inheritdoc/>
 		public string SetCode => this.m_setCode;
+
+		/// <inheritdoc/>
 		public string SetName => this.m_setName;
 
+		/// <summary>
+		/// Constructs new instance of <see cref="CardRushTactic"/>.
+		/// </summary>
 		public CardRushTactic()
 		{
 			this.m_name = String.Empty;
@@ -33,6 +55,7 @@ namespace SharpScraper.Web
 			this.m_setName = String.Empty;
 		}
 
+		/// <inheritdoc/>
 		public Task Parse(HtmlDocument document)
 		{
 			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "goods_name");

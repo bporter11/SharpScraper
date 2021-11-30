@@ -1,10 +1,13 @@
-﻿using HtmlAgilityPack;
+using HtmlAgilityPack;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SharpScraper.Web
 {
+	/// <summary>
+	/// Implements <see cref="ICardTactic"/> that operates on TCGMP domain.
+	/// </summary>
 	public class TCGMPTactic : ICardTactic
 	{
 		private string m_name;
@@ -13,15 +16,34 @@ namespace SharpScraper.Web
 		private string m_setCode;
 		private string m_setName;
 
+		/// <summary>
+		/// Domain that this class uses as a target.
+		/// </summary>
 		public static readonly string Domain = "tcgmp.jp";
 
+		/// <summary>
+		/// Returns constant <see langword="false"/>.
+		/// </summary>
 		public bool IsNull => false;
+
+		/// <inheritdoc/>
 		public string Name => this.m_name;
+
+		/// <inheritdoc/>
 		public double Price => this.m_price;
+
+		/// <inheritdoc/>
 		public string Rarity => this.m_rarity;
+
+		/// <inheritdoc/>
 		public string SetCode => this.m_setCode;
+
+		/// <inheritdoc/>
 		public string SetName => this.m_setName;
 
+		/// <summary>
+		/// Constructs new instance of <see cref="TCGMPTactic"/>.
+		/// </summary>
 		public TCGMPTactic()
 		{
 			this.m_name = String.Empty;
@@ -30,6 +52,7 @@ namespace SharpScraper.Web
 			this.m_setName = String.Empty;
 		}
 
+		/// <inheritdoc/>
 		public Task Parse(HtmlDocument document)
 		{
 			var goods = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "name");

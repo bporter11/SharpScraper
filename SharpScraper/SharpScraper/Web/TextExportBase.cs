@@ -1,20 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SharpScraper.Web
 {
+	/// <summary>
+	/// Implements <see cref="IExportBase"/> that operates on .txt extension files.
+	/// </summary>
 	public class TextExportBase : IExportBase
 	{
+		/// <summary>
+		/// String identifier for this <see cref="IExportBase"/>.
+		/// </summary>
 		public static readonly string Name = "TXT";
 
-		public TextExportBase()
-		{
-		}
-
+		/// <inheritdoc/>
 		public Task Export(Stream stream, IDictionary<string, ICardTactic> cards)
 		{
 			var writer = new StreamWriter(stream);

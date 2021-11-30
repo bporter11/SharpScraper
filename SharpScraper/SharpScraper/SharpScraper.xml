@@ -1,0 +1,544 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpScraper</name>
+    </assembly>
+    <members>
+        <member name="T:SharpScraper.WebUtils">
+            <summary>
+            Provides utilities for recursive <see cref="T:HtmlAgilityPack.HtmlNode"/> iterations and lookups.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.WebUtils.FindAllApplicableHtmlNodes(HtmlAgilityPack.HtmlNode,System.Predicate{HtmlAgilityPack.HtmlNode})">
+            <summary>
+            Finds all child <see cref="T:HtmlAgilityPack.HtmlNode"/> that match <see cref="T:System.Predicate`1"/> passed.
+            </summary>
+            <param name="parent">Parent <see cref="T:HtmlAgilityPack.HtmlNode"/> on which iteration should occur.</param>
+            <param name="predicate"><see cref="T:System.Predicate`1"/> that indicates pattern of node selections.</param>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/> of all <see cref="T:HtmlAgilityPack.HtmlNode"/> that match <see cref="T:System.Predicate`1"/> passed.</returns>
+        </member>
+        <member name="M:SharpScraper.WebUtils.FindHtmlNodeWithAttributeRecursive(HtmlAgilityPack.HtmlNode,System.String,System.String,System.String)">
+            <summary>
+            Recursively searches for <see cref="T:HtmlAgilityPack.HtmlNode"/> based on arguments passed.
+            </summary>
+            <param name="parent">Parent <see cref="T:HtmlAgilityPack.HtmlNode"/> to start recursive search from.</param>
+            <param name="name">Name of the node to search for.</param>
+            <param name="attrib">Attribute name of the node to search for.</param>
+            <param name="value">Value of the attribute to search for.</param>
+            <returns><see cref="T:HtmlAgilityPack.HtmlNode"/> that matches arguments passed, if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.WebUtils.FindHtmlNodeWithIDRecursive(HtmlAgilityPack.HtmlNode,System.String,System.String)">
+            <summary>
+            Recursively searches for <see cref="T:HtmlAgilityPack.HtmlNode"/> based on arguments passed.
+            </summary>
+            <param name="parent">Parent <see cref="T:HtmlAgilityPack.HtmlNode"/> to start recursive search from.</param>
+            <param name="name">Name of the node to search for.</param>
+            <param name="id">ID value of the node to search for.</param>
+            <returns><see cref="T:HtmlAgilityPack.HtmlNode"/> that matches arguments passed, if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.WebUtils.FindHtmlNodeWithNameRecursive(HtmlAgilityPack.HtmlNode,System.String)">
+            <summary>
+            Recursively searches for <see cref="T:HtmlAgilityPack.HtmlNode"/> based on arguments passed.
+            </summary>
+            <param name="parent">Parent <see cref="T:HtmlAgilityPack.HtmlNode"/> to start recursive search from.</param>
+            <param name="name">Name of the node to search for.</param>
+            <returns><see cref="T:HtmlAgilityPack.HtmlNode"/> that matches arguments passed, if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.WebUtils.GetHtmlNodeContentByPath(HtmlAgilityPack.HtmlNode,System.String[])">
+            <summary>
+            Gets content of <see cref="T:HtmlAgilityPack.HtmlNode"/> using XML path provided.
+            </summary>
+            <param name="parent">Parent <see cref="T:HtmlAgilityPack.HtmlNode"/> to start path finding from.</param>
+            <param name="path">Path arguments of the final node to look for.</param>
+            <returns>Content of <see cref="T:HtmlAgilityPack.HtmlNode"/>, if found using path provided; otherwise, <see cref="F:System.String.Empty"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.WebUtils.TryReceiveHtmlPageAsync(System.String)">
+            <summary>
+            Attempts to asynchronously get <see cref="T:HtmlAgilityPack.HtmlDocument"/> using URL provided.
+            </summary>
+            <param name="page">URL of the page to get data from.</param>
+            <returns><see cref="T:HtmlAgilityPack.HtmlDocument"/> on successful operation; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="T:SharpScraper.Web.CardFactory">
+            <summary>
+            Provides factory pattern for parsing and exporting databases of cards.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.CardFactory.LoadedCards">
+            <summary>
+            Represents a read-only dictionary of parsed URLs and <see cref="T:SharpScraper.Web.ICardTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.CardFactory"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.Init">
+            <summary>
+            Initializes current instance of <see cref="T:SharpScraper.Web.CardFactory"/> with default supported <see cref="T:SharpScraper.Web.ICardTactic"/> and <see cref="T:SharpScraper.Web.IExportBase"/> classes.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.IsTacticRegistered(System.String)">
+            <summary>
+            Checks whether <see cref="T:SharpScraper.Web.ICardTactic"/> with domain provided is registered in the current factory.
+            </summary>
+            <param name="domain">Domain of <see cref="T:SharpScraper.Web.ICardTactic"/> as a <see cref="T:System.String"/>.</param>
+            <returns><see langword="true"/> if <see cref="T:SharpScraper.Web.ICardTactic"/> with domain provided is registered; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.IsExportRegistered(System.String)">
+            <summary>
+            Checks whether <see cref="T:SharpScraper.Web.IExportBase"/> with identifier provided is registered in the current factory.
+            </summary>
+            <param name="export">Export identifier of <see cref="T:SharpScraper.Web.IExportBase"/> as a <see cref="T:System.String"/>.</param>
+            <returns><see langword="true"/> if <see cref="T:SharpScraper.Web.IExportBase"/> with identifier provided is registered; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.RegisterTactic``1(System.String)">
+            <summary>
+            Registers <see cref="T:SharpScraper.Web.ICardTactic"/> type provided under the domain specified in the current factory.
+            </summary>
+            <typeparam name="T"><see cref="T:SharpScraper.Web.ICardTactic"/> type to register.</typeparam>
+            <param name="domain">Domain of <see cref="T:SharpScraper.Web.ICardTactic"/> as a <see cref="T:System.String"/>.</param>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.RegisterExport``1(System.String)">
+            <summary>
+            Registers <see cref="T:SharpScraper.Web.IExportBase"/> type provided under the identifier specified in the current factory.
+            </summary>
+            <typeparam name="T"><see cref="T:SharpScraper.Web.IExportBase"/> type to register.</typeparam>
+            <param name="export">Identifier of <see cref="T:SharpScraper.Web.IExportBase"/> as a <see cref="T:System.String"/>.</param>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.ExportAsync(System.IO.Stream,System.String)">
+            <summary>
+            Asynchronously exports all parsed <see cref="T:SharpScraper.Web.ICardTactic"/> into the stream provided with export type specified.
+            </summary>
+            <param name="stream"><see cref="T:System.IO.Stream"/> to export data into.</param>
+            <param name="export">Identifier of <see cref="T:SharpScraper.Web.IExportBase"/> to use.</param>
+            <returns>Number of exported cards as <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.ExportAsync(System.String,System.String)">
+            <summary>
+            Asynchronously exports all parsed <see cref="T:SharpScraper.Web.ICardTactic"/> into file path provided with export type specified.
+            </summary>
+            <param name="iopath">File path to export data into.</param>
+            <param name="export">Identifier of <see cref="T:SharpScraper.Web.IExportBase"/> to use.</param>
+            <returns>Number of exported cards as <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:SharpScraper.Web.CardFactory.ParseAsync(System.String)">
+            <summary>
+            Asynchronously parses card data with URL provided and using according registered <see cref="T:SharpScraper.Web.ICardTactic"/>.
+            </summary>
+            <param name="url">URL of card to parse and store in the current factory.</param>
+            <returns><see cref="P:System.Threading.Tasks.Task.CompletedTask"/> on successful parsing.</returns>
+        </member>
+        <member name="T:SharpScraper.Web.CardMarketTactic">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.ICardTactic"/> that operates on CardMarket domain.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.CardMarketTactic.Domain">
+            <summary>
+            Domain that this class uses as a target.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.CardMarketTactic.IsNull">
+            <summary>
+            Returns constant <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.CardMarketTactic.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardMarketTactic.Price">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardMarketTactic.Rarity">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardMarketTactic.SetCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardMarketTactic.SetName">
+            <inheritdoc/>
+        </member>
+        <member name="M:SharpScraper.Web.CardMarketTactic.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.CardMarketTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.CardMarketTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.CardRushTactic">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.ICardTactic"/> that operates on CardRush domain.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.CardRushTactic.Domain">
+            <summary>
+            Domain that this class uses as a target.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.CardRushTactic.IsNull">
+            <summary>
+            Returns constant <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.CardRushTactic.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardRushTactic.Price">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardRushTactic.Rarity">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardRushTactic.SetCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.CardRushTactic.SetName">
+            <inheritdoc/>
+        </member>
+        <member name="M:SharpScraper.Web.CardRushTactic.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.CardRushTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.CardRushTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.CSVExportBase">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.IExportBase"/> that operates on .csv extension files.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.CSVExportBase.Name">
+            <summary>
+            String identifier for this <see cref="T:SharpScraper.Web.IExportBase"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.CSVExportBase.Export(System.IO.Stream,System.Collections.Generic.IDictionary{System.String,SharpScraper.Web.ICardTactic})">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.ICardTactic">
+            <summary>
+            Provides basic functionality for parsing and storing website-dependent card information.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.ICardTactic.IsNull">
+            <summary>
+            Returns <see langword="true"/> if this class is a default nullable object implemention; otherwise, <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.ICardTactic.Name">
+            <summary>
+            Name of the card parsed; if empty, returns <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.ICardTactic.Price">
+            <summary>
+            Price of the card parsed; if empty, returns default <see cref="T:System.Double"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.ICardTactic.Rarity">
+            <summary>
+            Rarity of the card parsed; if empty, returns <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.ICardTactic.SetCode">
+            <summary>
+            Set Code of the card parsed; if empty, returns <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.ICardTactic.SetName">
+            <summary>
+            Set Name of the card parsed; if empty, returns <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.ICardTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Parses card information based on the <see cref="T:HtmlAgilityPack.HtmlDocument"/> provided.
+            </summary>
+            <param name="document"><see cref="T:HtmlAgilityPack.HtmlDocument"/> to get card information from.</param>
+            <returns><see cref="P:System.Threading.Tasks.Task.CompletedTask"/> on successful completion.</returns>
+        </member>
+        <member name="T:SharpScraper.Web.IExportBase">
+            <summary>
+            Provides basic functionality for exporting <see cref="T:SharpScraper.Web.ICardTactic"/> collection as serialized data.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.IExportBase.Export(System.IO.Stream,System.Collections.Generic.IDictionary{System.String,SharpScraper.Web.ICardTactic})">
+            <summary>
+            Exports collection of <see cref="T:SharpScraper.Web.ICardTactic"/> by serializing them into <see cref="T:System.IO.Stream"/> provided.
+            </summary>
+            <param name="stream"><see cref="T:System.IO.Stream"/> to serialize into.</param>
+            <param name="cards"><see cref="T:System.Collections.Generic.IDictionary`2"/> of cards and URLs to export.</param>
+            <returns><see cref="P:System.Threading.Tasks.Task.CompletedTask"/> on successful compleition.</returns>
+        </member>
+        <member name="T:SharpScraper.Web.NullTactic">
+            <summary>
+            Represents default nullable implementation of <see cref="T:SharpScraper.Web.ICardTactic"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.NullTactic.Null">
+            <summary>
+            Represents empty <see cref="T:SharpScraper.Web.NullTactic"/>. This field is read-only.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.NullTactic.IsNull">
+            <summary>
+            Returns constant <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.NullTactic.Name">
+            <summary>
+            This property is not implemented and throws <see cref="T:System.NotImplementedException"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.NullTactic.Price">
+            <summary>
+            This property is not implemented and throws <see cref="T:System.NotImplementedException"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.NullTactic.Rarity">
+            <summary>
+            This property is not implemented and throws <see cref="T:System.NotImplementedException"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.NullTactic.SetCode">
+            <summary>
+            This property is not implemented and throws <see cref="T:System.NotImplementedException"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.NullTactic.SetName">
+            <summary>
+            This property is not implemented and throws <see cref="T:System.NotImplementedException"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.NullTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            This method is not implemented and throws <see cref="T:System.NotImplementedException"/>.
+            </summary>
+        </member>
+        <member name="T:SharpScraper.Web.PokemonWizardTactic">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.ICardTactic"/> that operates on PokemonWizard domain.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.PokemonWizardTactic.Domain">
+            <summary>
+            Domain that this class uses as a target.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.PokemonWizardTactic.IsNull">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.PokemonWizardTactic.Name">
+            <summary>
+            Returns constant <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.PokemonWizardTactic.Price">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.PokemonWizardTactic.Rarity">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.PokemonWizardTactic.SetCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.PokemonWizardTactic.SetName">
+            <inheritdoc/>
+        </member>
+        <member name="M:SharpScraper.Web.PokemonWizardTactic.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.PokemonWizardTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.PokemonWizardTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.TCGMPTactic">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.ICardTactic"/> that operates on TCGMP domain.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.TCGMPTactic.Domain">
+            <summary>
+            Domain that this class uses as a target.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.TCGMPTactic.IsNull">
+            <summary>
+            Returns constant <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.TCGMPTactic.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TCGMPTactic.Price">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TCGMPTactic.Rarity">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TCGMPTactic.SetCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TCGMPTactic.SetName">
+            <inheritdoc/>
+        </member>
+        <member name="M:SharpScraper.Web.TCGMPTactic.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.TCGMPTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.TCGMPTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.TextExportBase">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.IExportBase"/> that operates on .txt extension files.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.TextExportBase.Name">
+            <summary>
+            String identifier for this <see cref="T:SharpScraper.Web.IExportBase"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.TextExportBase.Export(System.IO.Stream,System.Collections.Generic.IDictionary{System.String,SharpScraper.Web.ICardTactic})">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.TrollAndToadTactic">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.ICardTactic"/> that operates on TrollAndToad domain.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.TrollAndToadTactic.Domain">
+            <summary>
+            Domain that this class uses as a target.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.TrollAndToadTactic.IsNull">
+            <summary>
+            Returns constant <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:SharpScraper.Web.TrollAndToadTactic.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TrollAndToadTactic.Price">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TrollAndToadTactic.Rarity">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TrollAndToadTactic.SetCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:SharpScraper.Web.TrollAndToadTactic.SetName">
+            <inheritdoc/>
+        </member>
+        <member name="M:SharpScraper.Web.TrollAndToadTactic.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.TrollAndToadTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.TrollAndToadTactic.Parse(HtmlAgilityPack.HtmlDocument)">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.XLSXExportBase">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.IExportBase"/> that operates on .xlsx extension files.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XLSXExportBase.Name">
+            <summary>
+            String identifier for this <see cref="T:SharpScraper.Web.IExportBase"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.XLSXExportBase.Export(System.IO.Stream,System.Collections.Generic.IDictionary{System.String,SharpScraper.Web.ICardTactic})">
+            <inheritdoc/>
+        </member>
+        <member name="T:SharpScraper.Web.XMLExportBase">
+            <summary>
+            Implements <see cref="T:SharpScraper.Web.IExportBase"/> that operates on .xml extension files.
+            </summary>
+        </member>
+        <member name="T:SharpScraper.Web.XMLExportBase.CardSerializer">
+            <summary>
+            Base class for serializing card data as XML.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardSerializer.Name">
+            <summary>
+            Reference to <see cref="P:SharpScraper.Web.ICardTactic.Name"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardSerializer.Price">
+            <summary>
+            Reference to <see cref="P:SharpScraper.Web.ICardTactic.Price"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardSerializer.Rarity">
+            <summary>
+            Reference to <see cref="P:SharpScraper.Web.ICardTactic.Rarity"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardSerializer.SetCode">
+            <summary>
+            Reference to <see cref="P:SharpScraper.Web.ICardTactic.SetCode"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardSerializer.SetName">
+            <summary>
+            Reference to <see cref="P:SharpScraper.Web.ICardTactic.SetName"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardSerializer.URL">
+            <summary>
+            Reference to URL of provided <see cref="T:SharpScraper.Web.ICardTactic"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.XMLExportBase.CardSerializer.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.XMLExportBase.CardSerializer"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.XMLExportBase.CardSerializer.#ctor(System.String,SharpScraper.Web.ICardTactic)">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.XMLExportBase.CardSerializer"/> with URL and <see cref="T:SharpScraper.Web.ICardTactic"/> provided.
+            </summary>
+            <param name="url">URL of <see cref="T:SharpScraper.Web.ICardTactic"/> as <see cref="T:System.String"/>.</param>
+            <param name="card"><see cref="T:SharpScraper.Web.ICardTactic"/> card data.</param>
+        </member>
+        <member name="T:SharpScraper.Web.XMLExportBase.CardDatabase">
+            <summary>
+            Base class for serializing collection of <see cref="T:SharpScraper.Web.ICardTactic"/>.
+            </summary>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.CardDatabase.Cards">
+            <summary>
+            <see cref="T:System.Array"/> of <see cref="T:SharpScraper.Web.XMLExportBase.CardSerializer"/> classes.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.XMLExportBase.CardDatabase.#ctor">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.XMLExportBase.CardDatabase"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.XMLExportBase.CardDatabase.#ctor(System.Collections.Generic.IDictionary{System.String,SharpScraper.Web.ICardTactic})">
+            <summary>
+            Constructs new instance of <see cref="T:SharpScraper.Web.XMLExportBase.CardDatabase"/> with collection of <see cref="T:SharpScraper.Web.ICardTactic"/> provided.
+            </summary>
+            <param name="cards"><see cref="T:System.Collections.Generic.IDictionary`2"/> of URLs and their corresponding <see cref="T:SharpScraper.Web.ICardTactic"/>.</param>
+        </member>
+        <member name="F:SharpScraper.Web.XMLExportBase.Name">
+            <summary>
+            String identifier for this <see cref="T:SharpScraper.Web.IExportBase"/>.
+            </summary>
+        </member>
+        <member name="M:SharpScraper.Web.XMLExportBase.Export(System.IO.Stream,System.Collections.Generic.IDictionary{System.String,SharpScraper.Web.ICardTactic})">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

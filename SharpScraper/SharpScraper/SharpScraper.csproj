@@ -8,6 +8,10 @@
     <StartupObject />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Max\source\repos\final-project\SharpScraper\SharpScraper\SharpScraper.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.13.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
