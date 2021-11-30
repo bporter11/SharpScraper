@@ -46,25 +46,32 @@ You can download the latest release [here](https://github.com/cs100/final-projec
 Command line usage works as 
 
 Windows:
+
     CardScraper.exe args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
 Unix
+
     CardScraper args [OUTPUT TYPE] [EXPORT PATH] URL [URL...]
 
 Or
 
 Windows:
+
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
 
 Unix
+
     CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
  
 # Options
     [OUTPUT TYPE]           TXT, CSV, XML, or XLSX. Must be in all caps
+
     [EXPORT PATH]           specifies where you want your output to be located. if just
                             the name of a file, then it will be placed in the same
                             directory from where the command was ran
+    
     [URL...]                Multiple URLs can be given at the same time
+
     [File...]               Multiple Files can be given at the same time
  
 ## Testing
