@@ -82,4 +82,4 @@ File means a text file containing links, one per line.
     [File...]               Multiple Files can be given at the same time
  
 ## Testing
-Project was tested by manually checking desired values from the website and checking those values against those acquired from the program itself. Since price can flucuate, these test cases may need to be updated if run at a later date. We used xUnit testing framework
+Project was tested by manually checking desired values from the website and checking those values against those acquired from the program itself. Since price can flucuate, these test cases may need to be updated if run at a later date. Therefore later commits may show failed test cases, but please refer to earlier commits to see that test cases did indeed pass. We used xUnit testing framework
