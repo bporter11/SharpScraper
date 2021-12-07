@@ -38,6 +38,9 @@ Authors:
 You can pass direct links to products
  ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/input%20files.png)
 Or you can pass in one or more files that contains multiple links
+ ![class diagram](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/Class_Diagram.png)
+ Class Diagram
+
  ## Installation/Usage
 You must have [.Net 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) installed
 
@@ -55,6 +58,8 @@ Unix
 
 Or
 
+args means you can supply links to the item.
+
 Windows:
 
     CardScraper.exe file [OUTPUT TYPE] [EXPORT PATH] File [File...]
@@ -62,6 +67,8 @@ Windows:
 Unix
 
     CardScraper file [OUTPUT TYPE] [EXPORT PATH] File [File...]
+
+File means a text file containing links, one per line.
  
 # Options
     [OUTPUT TYPE]           TXT, CSV, XML, or XLSX. Must be in all caps
@@ -75,4 +82,4 @@ Unix
     [File...]               Multiple Files can be given at the same time
  
 ## Testing
-Project was tested by manually checking desired values from the website and checking those values against those acquired from the program itself. Since price can flucuate, these test cases may need to be updated if run at a later date. We used xUnit testing framework
+Project was tested by manually checking desired values from the website and checking those values against those acquired from the program itself. Since price can flucuate, these test cases may need to be updated if run at a later date. Therefore later commits may show failed test cases, but please refer to earlier commits to see that test cases did indeed pass. We used xUnit testing framework
