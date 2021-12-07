@@ -38,6 +38,9 @@ Authors:
 You can pass direct links to products
  ![input files](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/input%20files.png)
 Or you can pass in one or more files that contains multiple links
+ ![class diagram](https://github.com/cs100/final-project-ncari002-mkulb002-bport020-pullm002/blob/master/screenshots/Class_Diagram.png)
+ Class Diagram
+
  ## Installation/Usage
 You must have [.Net 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) installed
 
