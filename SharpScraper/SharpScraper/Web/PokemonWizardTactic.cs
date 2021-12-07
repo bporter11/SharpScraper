@@ -57,7 +57,7 @@ namespace SharpScraper.Web
 		{
 			var names = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "h1", "class", "h1-header");
 			var table = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "table", "class", "table table-borderless table-sm");
-			var price = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "text-success");
+			var price = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "text-danger");
 
 			if (names is not null)
 			{
@@ -173,6 +173,20 @@ namespace SharpScraper.Web
 				if (split.Length > 0)
 				{
 					_ = Double.TryParse(split[0], out this.m_price);
+				}
+			}
+			else
+			{
+				price = WebUtils.FindHtmlNodeWithAttributeRecursive(document.DocumentNode, "span", "class", "text-success");
+
+				if (price is not null)
+				{
+					var split = price.InnerText.Split(new char[] { ' ', '$' }, StringSplitOptions.RemoveEmptyEntries);
+
+					if (split.Length > 0)
+					{
+						_ = Double.TryParse(split[0], out this.m_price);
+					}
 				}
 			}
 
